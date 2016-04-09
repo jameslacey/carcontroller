@@ -1,0 +1,62 @@
+#!/bin/bash
+mount /dev/mmcblk0p2 / -o remount,ro
+tvservice -o
+stty -F /dev/ttyAMA0 9600
+gpio -g mode 27 down
+gpio -g mode 22 down
+gpio -g mode 23 down
+gpio -g mode 24 down
+TTY=/dev/ttyAMA0
+while true; do
+A=0
+B=0
+C=0
+D=0
+[[ $(gpio -g read 27) == 1]] && A=1 #forward
+[[ $(gpio -g read 22) == 1]] && B=2 #backward
+[[ $(gpio -g read 23) == 1]] && C=4 #right
+[[ $(gpio -g read 24) == 1]] && D=8 #left
+SWSTATE=$(($A+$B+$C+$D))
+case $SWSTATE in
+0)
+echo "aAASTOP-----" > $TTY
+echo "aAACENTER---" > $TTY
+sleep 0.5
+;;
+1)
+echo "aAAFORWARD--" > $TTY
+echo "aAACENTER---" > $TTY
+;;
+2)
+echo "aAABACKWARD-" > $TTY
+echo "aAACENTER---" > $TTY
+;;
+4)
+echo "aAASTOP-----" > $TTY
+echo "aAARIGHT----" > $TTY
+;;
+5)
+echo "aAAFORWARD--" > $TTY
+echo "aAARIGHT----" > $TTY
+;;
+6)
+echo "aAABACKWARD-" > $TTY
+echo "aAARIGHT----" > $TTY
+;;
+8)
+echo "aAASTOP-----" > $TTY
+echo "aAALEFT-----" > $TTY
+;;
+9)
+echo "aAAFORWARD--" > $TTY
+echo "aAALEFT-----" > $TTY
+;;
+10)
+echo "aAABACKWARD-" > $TTY
+echo "aAALEFT-----" > $TTY
+;;
+*)
+echo "DEBUG: $SWSTATE"
+;;
+esac
+done
