@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+
 #put this code in /etc/rc.local to execute at boot
 mount /dev/mmcblk0p2 / -o remount,ro #prevent SD card corruption by mounting read only
 mount proc /proc -t proc #as this is executed just after the kernel has finished booting, /proc doesn't exist. This creates it.
