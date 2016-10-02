@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 
 #put this code in /etc/rc.local to execute at boot
 mount /dev/mmcblk0p2 / -o remount,ro #prevent SD card corruption by mounting read only
