@@ -11,6 +11,9 @@ I have made these publicly accessible so that others can design remote control p
 
 Resources:
 http://jamesl.tk/faq.html My website's FAQ
+
 https://befinitiv.wordpress.com/wifibroadcast-analog-like-transmission-of-live-video-data/ Wifibroadcast, used on the Raspberry Pi to transmit video, and on the laptop to receive video
+
 https://shop.pimoroni.com/products/xinorf-100-arduino-uno-r3-based-dev-board-with-radio-transceiver Information about the XinoRF, used on the remote control car
+
 https://shop.pimoroni.com/products/slice-of-radio-wireless-rf-transciever-for-the-raspberry-pi Information about the Slice of Radio used in the car
