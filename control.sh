@@ -58,7 +58,7 @@ echo "aAABACKWARD-" > $TTY
 echo "aAALEFT-----" > $TTY
 ;;
 *)
-echo "DEBUG: $SWSTATE" #print to a debug terminal if therei s an unknown option
+echo "DEBUG: $SWSTATE" #print to a debug terminal if there is an unknown option
 ;;
 esac
 done
