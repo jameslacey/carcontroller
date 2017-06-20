@@ -1,6 +1,6 @@
 #!/bin/bash
-#put this code in /etc/rc.local to execute at boot
-mount /dev/mmcblk0p2 / -o remount,ro #prevent SD card corruption by mounting read only
+#put this code in /control.sh, add "init=/control.sh" to /boot/cmdline.txt.
+mount /dev/mmcblk0p2 / -o remount,ro #prevent SD card corruption by mounting read only.
 mount proc /proc -t proc #as this is executed just after the kernel has finished booting, /proc doesn't exist. This creates it.
 tvservice -o #Turn off HDMI
 stty -F /dev/ttyAMA0 9600 #set the baudrate of the slice of radio
